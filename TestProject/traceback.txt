@@ -1,0 +1,24 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 60, in script
+    Guy Rosen "placeholder für Aufgabe 1"
+Exception: Sayer 'Guy' is not defined.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 60, in script
+    Guy Rosen "placeholder für Aufgabe 1"
+  File "C:\Users\vibiz\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 2560, in execute
+    Say.execute(self)
+  File "C:\Users\vibiz\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 575, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\vibiz\Downloads\renpy-8.2.2-sdk\renpy\ast.py", line 464, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'Guy' is not defined.
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.2.2.24061201
+TestProject 1.0
+Mon Jun 17 10:38:02 2024
