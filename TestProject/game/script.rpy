@@ -27,8 +27,6 @@ label start:
 
     # These display lines of dialogue.
 
-    e "Dies ist eine Änderung."
-
     e "Hallo und willkommen in meiner Welt der Cybersicherheit. Mein Name ist Guy Rosen und ich bin Chief Information Security Officer bei Meta."
 
     e "Meine Aufgaben sind die Überwachung der Sicherheitsmaßnahmen des Unternehmens, die Abwehr von Cyberbedrohungen und der Schutz von Nutzerdaten."
