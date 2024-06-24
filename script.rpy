@@ -17,13 +17,18 @@ image guy:
     "guy avatar.png"
     zoom 1.6
 
-image bg test:
-    "bg test.jpeg"
-    zoom 2.2
-
-image bg exercise:
-    "exercise bg.jpeg"
+image bg exercise2:
+    "bg exercise2.jpeg"
     zoom 1.6
+
+image gatter1:
+    "Gatter1.png"
+
+image gatter2:
+    "Gatter2.png"
+
+image gatter3:
+    "Gatter3.png"
 
 
 # The game starts here.
@@ -135,7 +140,7 @@ label storyPart4:
 
 label aufgabe_1:
 
-    scene bg exercise with fade
+    scene bg exercise2 with fade
 
     e "Wir haben den Namen des Hackers, aber er ist verschlüsselt. Die verschlüsselte Nachricht lautet: \n\nR8fIsyf/PuecXgTFMHhwePM="
     e "Hierbei handelt es sich um eine Art Verschlüsselung welche sich mit einem Passwort entschlüssen lässt."
@@ -160,7 +165,7 @@ label aufgabe_1:
     jump storyPart2
 
 label aufgabe_1Schwer:
-    scene bg exercise with fade
+    scene bg exercise2 with fade
 
     e "Wir haben den Namen des Hackers, aber er ist verschlüsselt. Die verschlüsselte Nachricht lautet: \n\nR8fIsyf/PuecXgTFMHhwePM=" 
     e "Hierbei handelt es sich um eine Art Verschlüsselung welche sich mit einem Passwort entschlüssen lässt."
@@ -187,7 +192,7 @@ label aufgabe_1Schwer:
 
 
 label aufgabe_2:
-    scene bg exercise with fade
+    scene bg exercise2 with fade
 
     e "Logikgatter sind die grundlegenden Bausteine digitaler Schaltungen. Sie nehmen einen oder mehrere Eingänge (0 oder 1) und geben basierend auf einer bestimmten Regel einen Ausgang (0 oder 1) aus."
     #vll auch in Bildform, die dann im Hintergrund eingeblendet wird?
@@ -260,7 +265,7 @@ label aufgabe_2:
 
 label aufgabe_2Schwer:
     #noch einfügen
-    scene bg exercise with fade
+    scene bg exercise2 with fade
     e "Logikgatter sind die grundlegenden Bausteine digitaler Schaltungen. Sie nehmen einen oder mehrere Eingänge (0 oder 1) und geben basierend auf einer bestimmten Regel einen Ausgang (0 oder 1) aus."
     #vll auch in Bildform, die dann im Hintergrund eingeblendet wird?
 
@@ -268,71 +273,70 @@ label aufgabe_2Schwer:
 
     e "Hier die erste Aufgabe:"
     e "Es geht um eine Kombination aus einem UND und einem ODER-Gatter." 
-    e "Ein AND-Gatter gibt nur dann eine 1 aus, wenn beide Eingänge 1 sind. Ein OR-"
-    #if Abfrage nach richtiger Lösung. Lösung: 0
-    $ loesung1s = renpy.input("Was ist der Ausgang des AND-Gatters?")
+    e "Ein AND-Gatter gibt nur dann eine 1 aus, wenn beide Eingänge 1 sind. Ein OR-Gatter gibt hingegen dann eine 1 aus, wenn nur mindestens ein Eingang 1 ist."
+
+    show gatter1 at truecenter
+    #if Abfrage nach richtiger Lösung. Lösung: 1
+    $ loesung1s = renpy.input("Was ist der Ausgang des AND/OR-Gatters?")
     $ loesung1s = loesung1s.strip()
 
-    if loesung1s == "0":
+    if loesung1s == "1":
         e "Das ist richtig. Gut gemacht!"
     else: 
         e "Das ist nicht ganz richtig. Versuchs noch einmal"
         jump andOr
+    hide gatter1
 
-    label orGatterS:
+    label nandNor:
 
     e "Nun zur zweiten Aufgabe:"
-    e "Es geht um ein OR-Gatter. Das OR-Gatter gibt nur dann eine 1 aus, mindestens ein Eingang 1 ist. Hier die beiden Eingänge: A=0, B=1"
+    e "Es geht um ein NAND/NOR-Gatter. Das NAND-Gatter gibt nur dann eine 0 aus, wenn beide Eingänge 1 sind. Das NOR-Gatter gibt nur dann eine 1 aus, wenn beide Eingänge 0 sind."
 
+    show gatter2 at truecenter
     #if Abfrage nach richtiger Lösung. Lösung: 1
-
-    $ loesung2s = renpy.input("Was ist der Ausgang des OR-Gatters?")
+    $ loesung2s = renpy.input("Was ist der Ausgang des NAND/NOR-Gatters?")
     $ loesung2s = loesung2s.strip()
 
     if loesung2s == "1":
         e "Das ist richtig. Gut gemacht!"
     else: 
         e "Das ist nicht ganz richtig. Versuchs noch einmal."
-        jump orGatterS
+        jump nandNor
+    hide gatter2
+    
+    label orAndNor:
 
-    label nandGatterS:
+    e "In der letzten Aufgabe geht es um ein kombiniertes OR/AND/NOR-Gatter."
+    e "Gib mir Bescheid, wenn ich nochmal die einzelnen Gatter erkären soll."
 
-    e "Die nächste Aufgabe handelt von einem NAND-Gatter:"
-    e "Ein NAND-Gatter gibt eine 0 aus, wenn beide Eingänge 1 sind. Es ist das Gegenteil eines AND-Gatters. Die beiden Eingänge: A=1, B=1"
+    menu:
+        "Erklär nochmal bitte.":
+            e "Das OR-Gatter gibt nur dann eine 1 aus, mindestens ein Eingang 1 ist. Das AND-Gatter gibt wiederum nur dann eine 1 aus, wenn beide Eingänge 1 sind. "
+            e "Und das NOR-Gatter gibt zuletzt nur dann eine 1 aus, wenn beide Eingänge 0 sind."
+            jump orAndNorA
+        "Ich bekomme das hin.":
+            jump orAndNorA
 
+
+    label orAndNorA:
+    show gatter3 at truecenter
     #if Abfrage nach richtiger Lösung. Lösung: 0
-    $ loesung3s = renpy.input("Was ist der Ausgang des NAND-Gatters?")
+    $ loesung3s = renpy.input("Was ist der Ausgang des OR/AND/NOR-Gatters?")
     $ loesung3s = loesung3s.strip()
 
     if loesung3s == "0":
         e "Das ist richtig. Gut gemacht!"
     else:
         e "Das ist nicht ganz richtig. Versuchs noch einmal."
-        jump nandGatterS
-
-    e "Das hast du super kombiniert bisher. Hier noch die letzte Aufgabe:"
-
-    label norGatterS:
-
-    e "Es geht um ein NOR-Gatter, das Gegenteil eines OR-Gatters. Es gibt eine 1 aus, wenn beide Eingänge 0 sind."
-
-    #if Abfrage nach richtiger Lösung. Lösung: 1
-
-    $ loesung4s = renpy.input("Was ist der Ausgang des NOR-Gatters?")
-    $ loesung4s = loesung4s.strip()
-
-    if loesung4s == "1":
-        e "Das ist richtig. Gut gemacht!"
-    else: 
-        e "Das ist nicht ganz richtig. Versuchs noch einmal."
-        jump norGatterS
+        jump orAndNorA
+    hide gatter3
 
     jump storyPart3Schwer
     
 
 
 label aufgabe_3: 
-    scene bg exercise with fade
+    scene bg exercise2 with fade
 
     e "Eine Binärzahl besteht nur aus den Ziffern 0 und 1. Jede Stelle in der Binärzahl steht für eine bestimmte Zahl, basierend auf der Position von rechts nach links."
     e "So geht ihr vor: Schreibt euch die Binärzahl auf."
@@ -383,7 +387,7 @@ label aufgabe_3:
     jump storyPart4
 
 label aufgabe_3Schwer:
-    scene bg exercise with fade
+    scene bg exercise2 with fade
 
     e "Eine Binärzahl besteht nur aus den Ziffern 0 und 1. Jede Stelle in der Binärzahl steht für eine bestimmte Zahl, basierend auf der Position von rechts nach links."
     e "So geht ihr vor: Schreibt euch die Binärzahl auf."
